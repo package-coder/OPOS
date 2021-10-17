@@ -1,11 +1,14 @@
 import express from 'express'
-import products from './data/products.js'
 import env from 'dotenv'
+import products from './data/products.js'
+import dbConnect from './config/db.js';
+import colors from 'colors'
 
-const app = express();
 
 env.config()
+dbConnect(process.env.MONGO_URI);
 
+const app = express();
 app.get('/', (req, res) => {
     res.send('API is running')
 })
@@ -22,5 +25,5 @@ app.get('/api/products/:id', (req, res) => {
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, ()=> {
-    console.log(`Server running in ${process.env.NODE_ENV} on port ${PORT}`)
+    console.log(`Server running in ${process.env.NODE_ENV} on port ${PORT}`.cyan.underline)
 })
