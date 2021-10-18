@@ -5,10 +5,12 @@
   "main": "server.js",
   "type": "module",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^5.1.1",
     "client": "^0.1.0",
     "colors": "^1.4.0",
     "dotenv": "^10.0.0",
+    "express-async-handler": "^1.2.0",
     "mongoose": "^6.0.11",
     "react-bootstrap": "^2.0.0-rc.1"
   },
@@ -21,7 +23,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon server/server",
-    "client": "npm start --prefix client"
+    "client": "npm start --prefix client",
+    "seeder:import": "node server/seeder",
+    "seeder:destruct": "node server/seeder -d"
   },
   "author": "",
   "license": "ISC"
